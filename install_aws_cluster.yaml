@@ -11,4 +11,4 @@ nodeGroups:
     desiredCapacity: 5
   - name: ng-2
     instanceType: m5.xlarge
-    desiredCapacity: 3
+    desiredCapacity: 5
