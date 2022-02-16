@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This script will install the AWS CLI
 # Require: Homebrew, Python, pip
 
