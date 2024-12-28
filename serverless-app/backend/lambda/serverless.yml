@@ -1,0 +1,34 @@
+service: serverless-app
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  createItem:
+    handler: lambda/handler.createItem
+    events:
+    - http:
+        path: create-item
+        method: post
+
+resources:
+  Resources:
+    ItemsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ItemsTable
+        AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+        KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+
+plugins:
+- serverless-webpack
